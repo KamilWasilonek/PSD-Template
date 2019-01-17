@@ -1,0 +1,24 @@
+{
+  "name": "psd-template",
+  "version": "1.0.0",
+  "description": "PSD-Template",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamilWasilonek/PSD-Template.git"
+  },
+  "author": "Kamil Wasilonek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KamilWasilonek/PSD-Template/issues"
+  },
+  "homepage": "https://KamilWasilonek.github.io/PSD-Template",
+  "dependencies": {
+    "gh-pages": "^2.0.1",
+    "node-sass": "^4.11.0"
+  }
+}
