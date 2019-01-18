@@ -6,11 +6,12 @@ html {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  font-size: 16px;
+  font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1900 - 300)));
   font-family: "PT Sans";
   text-align: center;
   cursor: default; }
 
+/* Reusable classes */
 .container {
   width: 85%;
   margin: 0 auto; }
@@ -20,7 +21,7 @@ html {
   color: #404040;
   font-family: "Montserrat";
   font-weight: 900;
-  font-size: 20px;
+  font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (1900 - 300)));
   text-transform: uppercase; }
 
 .noSelect {
@@ -42,7 +43,7 @@ html {
     padding: 20px 0 0 30px; }
   .nav .menu-btn {
     position: fixed;
-    top: 20px;
+    top: 15px;
     right: 20px;
     cursor: pointer; }
     .nav .menu-btn .line {
@@ -54,24 +55,23 @@ html {
 
 .banner-text {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-align: center; }
+  color: #fff; }
   .banner-text .text-group .text-1 {
-    font-size: 18px;
+    font-size: calc(18px + (30 - 18) * ((100vw - 300px) / (1900 - 300)));
     font-family: "Playfair Display";
     font-weight: 400; }
   .banner-text .text-group .text-2,
   .banner-text .text-group .text-3 {
-    font-size: 24px;
+    font-size: calc(24px + (36 - 24) * ((100vw - 300px) / (1900 - 300)));
     text-transform: uppercase;
     font-family: "Montserrat";
     font-weight: 900; }
   .banner-text .text-group .text-4 {
-    font-size: 14px;
+    font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1900 - 300)));
     font-weight: 400; }
   .banner-text .read-btn {
     cursor: pointer;
@@ -83,7 +83,8 @@ html {
     height: 30px;
     border-radius: 60px;
     color: #404040;
-    font-family: "Playfair Display"; }
+    font-family: "Playfair Display";
+    font-size: 16px; }
     .banner-text .read-btn p {
       margin-right: 1rem; }
     .banner-text .read-btn p {
@@ -96,8 +97,8 @@ html {
   .section-1 .service-details {
     display: flex;
     align-items: center;
-    min-height: 300px;
-    background: url("../img/Slide-green.png") 0px -160px;
+    min-height: 400px;
+    background: url("../img/texture-background.png") no-repeat;
     background-size: cover;
     color: #fff; }
     .section-1 .service-details .text {
@@ -119,21 +120,21 @@ html {
         height: 30px;
         border-radius: 60px;
         color: #404040;
-        font-family: "Playfair Display"; }
+        font-family: "Playfair Display";
+        font-size: 16px; }
         .section-1 .service-details .text .read-btn p {
           margin-right: 1rem; }
   .section-1 .service-group {
     padding: 30px 0;
     color: #757575; }
     .section-1 .service-group .service {
-      margin-bottom: 30px; }
+      width: 80%;
+      margin: 0 auto 30px auto; }
+      .section-1 .service-group .service .title {
+        font-size: 20px; }
 
 .section-2 {
-  background: url("../img/diagram-background.png") -300px 0 no-repeat;
-  color: #757575;
-  margin-bottom: 30px; }
-  .section-2 .diagram {
-    display: none; }
+  display: none; }
 
 .section-3 {
   cursor: default;
@@ -163,6 +164,7 @@ html {
       border-radius: 60px;
       color: #404040;
       font-family: "Playfair Display";
+      font-size: 16px;
       color: #009688;
       margin-right: 20px; }
       .section-3 .btn-group .btn-1 p {
@@ -180,8 +182,9 @@ html {
       border-radius: 60px;
       color: #404040;
       font-family: "Playfair Display";
+      font-size: 16px;
       background-color: transparent;
-      border: #fff 2px solid;
+      box-shadow: inset 0px 0px 0px 2px #fff;
       color: #fff; }
       .section-3 .btn-group .btn-2 p {
         margin-right: 1rem; }
@@ -195,3 +198,67 @@ html {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+@media (min-width: 480px) {
+  .banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("../img/Banner.png") no-repeat;
+    background-size: cover;
+    z-index: -1; } }
+
+@media (min-width: 768px) {
+  .section-1 {
+    flex-direction: row; }
+    .section-1 .service-details {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 400px;
+      background: url("../img/Slide-green.png") no-repeat;
+      background-size: cover;
+      color: #fff; }
+    .section-1 .service-group {
+      flex: 1; } }
+
+@media (min-width: 1200px) {
+  .banner-text .read-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    width: 170px;
+    height: 35px;
+    border-radius: 60px;
+    color: #404040;
+    font-family: "Playfair Display";
+    font-size: 18px; }
+    .banner-text .read-btn p {
+      margin-right: 1rem; }
+  .section-1 {
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: row; }
+    .section-1 .service-details {
+      text-align: justify;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 400px;
+      background: url("../img/Slide-green.png") no-repeat;
+      background-size: cover;
+      color: #fff; }
+    .section-1 .service-group {
+      background: #fff;
+      text-align: left;
+      flex: 1;
+      display: grid;
+      grid-template-areas: 'service-1 service-2' 'service-3 service-4';
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 30px;
+      box-shadow: 10px 10px 20px 0px #ccc;
+      font-size: calc(16px + (18 - 16) * ((100vw - 1200px) / (1800 - 1200))); } }

@@ -1,30 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|PT+Sans|Playfair+Display');
+@import 'config';
 $montserratFont: 'Montserrat';
 $playfairFont: 'Playfair Display';
 $sansFont: 'PT Sans';
 $greyBtnColor: #404040;
 $greyTextColor: #757575;
-$titleTextSize: 20px;
-@mixin btn {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    width: 150px;
-    height: 30px;
-    border-radius: 60px;
-    color: $greyBtnColor;
-    font-family: $playfairFont;
-    p {
-        margin-right: 1rem;
-    }
-}
-
+$smTitleTextSize: 20;
+$lgTitleTextSize: 25;
 @mixin flexCenter {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin respond-to($name) {
+    @if map-has-key($breakpoints,
+    $name) {
+        @media #{inspect(map-get($breakpoints, $name))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Please make sure it is defined in `$breakpoints` map.";
+    }
 }
 
 body,
@@ -34,11 +32,14 @@ html {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    font-size: 16px;
+    @include cssLock(16,
+    18);
     font-family: $sansFont;
     text-align: center;
     cursor: default;
 }
+
+/* Reusable classes */
 
 .container {
     width: 85%;
@@ -50,7 +51,8 @@ html {
     color: #404040;
     font-family: $montserratFont;
     font-weight: 900;
-    font-size: $titleTextSize;
+    @include cssLock($smTitleTextSize,
+    $lgTitleTextSize);
     text-transform: uppercase;
 }
 
@@ -76,7 +78,7 @@ html {
     }
     .menu-btn {
         position: fixed;
-        top: 20px;
+        top: 15px;
         right: 20px;
         cursor: pointer;
         .line {
@@ -90,28 +92,28 @@ html {
 }
 
 .banner-text {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
     height: 100vh;
-    align-items: center;
-    justify-content: center;
     color: #fff;
-    text-align: center;
     .text-group {
         .text-1 {
-            font-size: 18px;
+            @include cssLock(18,
+            30);
             font-family: $playfairFont;
             font-weight: 400;
         }
         .text-2,
         .text-3 {
-            font-size: 24px;
+            @include cssLock(24,
+            36);
             text-transform: uppercase;
             font-family: $montserratFont;
             font-weight: 900;
         }
         .text-4 {
-            font-size: 14px;
+            @include cssLock(14,
+            18);
             font-weight: 400;
         }
     }
@@ -126,12 +128,12 @@ html {
 .section-1 {
     display: flex;
     flex-direction: column;
-    width: 100%; // text-align: center;
+    width: 100%;
     .service-details {
         display: flex;
         align-items: center;
-        min-height: 300px;
-        background: url('../img/Slide-green.png') 0px -160px;
+        min-height: 400px;
+        background: url('../img/texture-background.png') no-repeat;
         background-size: cover;
         color: #fff;
         .text {
@@ -153,18 +155,17 @@ html {
         padding: 30px 0;
         color: #757575;
         .service {
-            margin-bottom: 30px;
+            width: 80%;
+            margin: 0 auto 30px auto;
+            .title{
+                font-size: 20px;
+            }
         }
     }
 }
 
 .section-2 {
-    background: url('../img/diagram-background.png') -300px 0 no-repeat;
-    color: $greyTextColor;
-    margin-bottom: 30px; // text-align: center;
-    .diagram {
-        display: none;
-    }
+    display: none;
 }
 
 .section-3 {
@@ -182,33 +183,34 @@ html {
         color: #fff;
         margin-bottom: 20px;
     }
-
-    .btn-group{
+    .btn-group {
         display: flex;
         margin-top: 20px;
-        .btn-1{
+        .btn-1 {
             @include btn;
             color: #009688;
             margin-right: 20px;
-            p{
+            p {
                 margin: 0;
             }
         }
-        .btn-2{
+        .btn-2 {
             @include btn;
             background-color: transparent;
-            border: #fff 2px solid;
+            box-shadow:inset 0px 0px 0px 2px #fff;
             color: #fff;
-            p{
+            p {
                 margin: 0;
             }
         }
     }
 }
 
-.footer{
+.footer {
     background-color: $greyBtnColor;
     color: #fff;
     min-height: 30px;
     @include flexCenter;
 }
+
+@import 'media';
